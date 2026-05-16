@@ -94,7 +94,7 @@ try:
             image = Image.open(uploaded_file).convert('RGB')
             st.image(image, caption='Source Input', use_container_width=True)
             
-            if st.button("🚀 Run AI Analysis"):
+            if st.button(" Run AI Analysis"):
                 with st.status("Analyzing Biometric Features...", expanded=True) as status:
                     st.write("Scanning facial landmarks...")
                     time.sleep(1)
@@ -128,7 +128,7 @@ try:
             st.write("#### Classification")
             cols = st.columns(5)
             cats = ["Infant", "Toddler", "Youth", "Teen", "Adult"]
-            current_cat = "Teen" if 13 <= age <= 19 else "Adult" # مثال بسيط للتصنيف
+            current_cat = "Teen" if 13 <= age <= 19 else "Adult" # 
             
             for i, c in enumerate(cats):
                 color = "#00d4ff" if c == current_cat else "#334455"
