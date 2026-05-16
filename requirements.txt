@@ -1,1 +1,5 @@
-torch, torchvision, streamlit, pillow
+streamlit
+torch
+torchvision
+pillow
+gdown
