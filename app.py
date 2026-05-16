@@ -8,7 +8,7 @@ import gdown
 import torch.nn.functional as F
 import time
 
-# 1. إعدادات الصفحة والجمالية (UI/UX)
+# 1.  gui
 st.set_page_config(page_title="AI Age Analyzer Pro", layout="wide")
 
 st.markdown("""
@@ -41,7 +41,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 2. إعدادات النموذج وتحميل الأوزان من درايف
+# 2. download weight
 file_id = '1BDcwqVEPklFQNS28DGME5jsc7NUqqscE'
 model_path = 'ultra_age_model_final.pth'
 
@@ -52,7 +52,7 @@ def load_model():
             url = f'https://drive.google.com/uc?id={file_id}'
             gdown.download(url, model_path, quiet=False)
     
-    # بناء معمارية ResNet-101
+    # construct ResNet-101
     model = models.resnet101(weights=None)
     num_ftrs = model.fc.in_features
     model.fc = nn.Sequential(
@@ -67,7 +67,7 @@ def load_model():
     model.eval()
     return model
 
-# 3. معالجة الصور (Pre-processing)
+# 3. (Pre-processing)
 def process_image(image):
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -76,7 +76,7 @@ def process_image(image):
     ])
     return transform(image).unsqueeze(0)
 
-# 4. واجهة المستخدم الرئيسية
+# 4. user interface
 st.title("🛡️ Neural Network Age Estimation System")
 st.write("Professional Research Tool for Biometric Verification")
 st.write("---")
@@ -124,7 +124,7 @@ try:
                 </div>
                 """, unsafe_allow_html=True)
             
-            # مقياس الفئات العمرية
+            #categorize
             st.write("#### Classification")
             cols = st.columns(5)
             cats = ["Infant", "Toddler", "Youth", "Teen", "Adult"]
