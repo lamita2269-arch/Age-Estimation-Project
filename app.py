@@ -5,7 +5,7 @@ from torchvision import models, transforms
 from PIL import Image
 import os
 import gdown  # مكتبة لتحميل الملفات من جوجل درايف
-
+import torch.nn.functional as F  
 
 file_id = '1BDcwqVEPklFQNS28DGME5jsc7NUqqscE'
 model_path = 'ultra_age_model_final.pth'
