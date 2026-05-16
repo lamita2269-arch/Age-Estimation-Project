@@ -26,7 +26,7 @@ st.markdown("""
         box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
     }
     .metric-text {
-        color: #00d4ff;
+        color: #FF8C00;
         font-family: 'Courier New', Courier, monospace;
         font-size: 32px;
         font-weight: bold;
@@ -118,7 +118,7 @@ try:
                 <div class="result-card">
                     <h3 style='color: white;'>Estimation Result</h3>
                     <p class="metric-text">The predicted age is: {age:.1f} Year</p>
-                    <p style='color: #00d4ff;'>Confidence Score: 96%</p>
+                    <p style='color: #39FF14;'>Confidence Score: 96%</p>
                     <hr style='border-color: #00d4ff;'>
                     <p style='font-size: 0.9em; color: #8899A6;'>Model Accuracy (MAE): 2.18</p>
                 </div>
