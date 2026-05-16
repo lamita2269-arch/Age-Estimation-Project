@@ -3,16 +3,22 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
-import torch.nn.functional as F
-
-# إعداد واجهة التطبيق
-st.title("🚀 AI Age Estimation System")
-st.write("رفع صورة للوجه وسيقوم النموذج بتقدير العمر بدقة MAE: 2.18")
+import os
+import gdown  # مكتبة لتحميل الملفات من جوجل درايف
 
 
-# تحميل المعمارية (ResNet-101)
+file_id = '1BDcwqVEPklFQNS28DGME5jsc7NUqqscE'
+model_path = 'ultra_age_model_final.pth'
+
 @st.cache_resource
-def load_model():
+def download_and_load_model():
+    # إذا لم يكن الملف موجوداً، قم بتحميله
+    if not os.path.exists(model_path):
+        with st.spinner('جاري تحميل أوزان النموذج من Google Drive... قد يستغرق ذلك لحظات.'):
+            url = f'https://drive.google.com/uc?id={file_id}'
+            gdown.download(url, model_path, quiet=False)
+    
+    # بناء المعمارية (ResNet-101) كما فعلنا في البحث
     model = models.resnet101(weights=None)
     num_ftrs = model.fc.in_features
     model.fc = nn.Sequential(
@@ -22,13 +28,13 @@ def load_model():
         nn.Dropout(0.5),
         nn.Linear(512, 101)
     )
-    # تحميل الأوزان التي قمت بصقلها
-    model.load_state_dict(torch.load('ultra_age_model_final.pth', map_location='cpu'))
+    
+    # تحميل الأوزان للجهاز (CPU)
+    model.load_state_dict(torch.load(model_path, map_location='cpu'))
     model.eval()
     return model
 
-
-model = load_model()
+model = download_and_load_model()
 
 # عمليات المعالجة المسبقة
 transform = transforms.Compose([
