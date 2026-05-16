@@ -77,7 +77,7 @@ def process_image(image):
     return transform(image).unsqueeze(0)
 
 # 4. user interface
-st.title("🛡️ Neural Network Age Estimation System")
+st.title("🛡️ Age Estimation System by deep learning")
 st.write("Professional Research Tool for Biometric Verification")
 st.write("---")
 
