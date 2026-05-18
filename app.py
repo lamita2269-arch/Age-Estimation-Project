@@ -118,9 +118,9 @@ try:
                 <div class="result-card">
                     <h3 style='color: white;'>Estimation Result</h3>
                     <p class="metric-text">The predicted age is: {age:.1f} Year</p>
-                    <p style='color: #39FF14;'>Confidence Score: 96%</p>
+                    
                     <hr style='border-color: #00d4ff;'>
-                    <p style='font-size: 0.9em; color: #8899A6;'>Model Accuracy (MAE): 2.18</p>
+                    
                 </div>
                 """, unsafe_allow_html=True)
             
